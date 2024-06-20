@@ -11,7 +11,7 @@ const AboutUs = () => {
           </p>
         </div>
         <div className="flex flex-wrap items-stretch justify-center -mx-4">
-          <div className="md:w-1/3 px-4 mb-8">
+          <div className="md:w-1/3 px-4 mb-8 transform transition-transform hover:scale-105">
             <div className="bg-gray-200 rounded-lg p-6 shadow-md h-full">
               <h3 className="text-xl font-bold mb-2 text-center text-gray-800">Our Mission</h3>
               <p className="text-gray-700 text-center">
@@ -19,7 +19,7 @@ const AboutUs = () => {
               </p>
             </div>
           </div>
-          <div className="md:w-1/3 px-4 mb-8">
+          <div className="md:w-1/3 px-4 mb-8 transform transition-transform hover:scale-105">
             <div className="bg-gray-200 rounded-lg p-6 shadow-md h-full">
               <h3 className="text-xl font-bold mb-2 text-center text-gray-800">Our Vision</h3>
               <p className="text-gray-700 text-center">
@@ -27,7 +27,7 @@ const AboutUs = () => {
               </p>
             </div>
           </div>
-          <div className="md:w-1/3 px-4 mb-8">
+          <div className="md:w-1/3 px-4 mb-8 transform transition-transform hover:scale-105">
             <div className="bg-gray-200 rounded-lg p-6 shadow-md h-full">
               <h3 className="text-xl font-bold mb-2 text-center text-gray-800">Our Values</h3>
               <p className="text-gray-700 text-center">
