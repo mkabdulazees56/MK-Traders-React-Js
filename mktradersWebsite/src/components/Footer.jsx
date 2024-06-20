@@ -2,6 +2,7 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPhone, faEnvelope, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
 import { faFacebook, faInstagram, faWhatsapp } from '@fortawesome/free-brands-svg-icons';
+import { Link } from 'react-scroll'; // Import Link from react-scroll
 
 const Footer = () => {
     return (
@@ -40,16 +41,16 @@ const Footer = () => {
                         <h3 className="text-xl font-bold mb-4">Website Links</h3>
                         <ul className="text-gray-400">
                             <li className="mb-2">
-                                <a href="#" className="hover:text-white">Home</a>
+                                <Link to="home" spy={true} smooth={true} offset={-70} duration={500} className="hover:text-white">Home</Link>
                             </li>
                             <li className="mb-2">
-                                <a href="#" className="hover:text-white">About Us</a>
+                                <Link to="about-us" spy={true} smooth={true} offset={-70} duration={500} className="hover:text-white">About Us</Link>
                             </li>
                             <li className="mb-2">
-                                <a href="#" className="hover:text-white">Products</a>
+                                <Link to="products" spy={true} smooth={true} offset={-70} duration={500} className="hover:text-white">Products</Link>
                             </li>
                             <li className="mb-2">
-                                <a href="#" className="hover:text-white">Contact</a>
+                                <Link to="contact" spy={true} smooth={true} offset={-70} duration={500} className="hover:text-white">Contact</Link>
                             </li>
                         </ul>
                     </div>
@@ -63,6 +64,7 @@ const Footer = () => {
                         </div>
                         <div className="mb-4">
                             <iframe
+                                title="MK Traders Location"
                                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.583664663414!2d79.84860606973572!3d6.940257802867981!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae2592e1b3872af%3A0x11c5b415a4dc65e6!2sM.K.%20TRADERS%20(PVT)%20LTD!5e0!3m2!1sen!2sin!4v1718799594236!5m2!1sen!2sin"
                                 width="100%"
                                 height="150"
@@ -74,7 +76,7 @@ const Footer = () => {
                     </div>
                     
                 </div>
-                <div className="text-center text-gray-400 mt-8">
+                <div className="text-center text-gray-400">
                     © 2024 All rights reserved. Development with <span className="text-pink-500">❤</span> by DevZee.
                 </div>
             </div>
@@ -83,4 +85,3 @@ const Footer = () => {
 };
 
 export default Footer;
-

@@ -8,6 +8,8 @@ const ContactUsPage = () => {
     const form = useRef();
     const [popupVisible, setPopupVisible] = useState(false);
     const [popupMessage, setPopupMessage] = useState('');
+    const [formData, setFormData] = useState({ user_name: '', user_email: '', message: '' });
+    const [formErrors, setFormErrors] = useState({ user_name: '', user_email: '', message: '' });
 
     useEffect(() => {
         let timer;
@@ -20,33 +22,63 @@ const ContactUsPage = () => {
         return () => clearTimeout(timer);
     }, [popupVisible]);
 
+    const isValidEmail = (email) => {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    };
+
+    const validateForm = () => {
+        const errors = {};
+        if (!formData.user_name) {
+            errors.user_name = 'Name is required';
+        }
+        if (!formData.user_email) {
+            errors.user_email = 'Email is required';
+        } else if (!isValidEmail(formData.user_email)) {
+            errors.user_email = 'Invalid email address';
+        }
+        if (!formData.message) {
+            errors.message = 'Message is required';
+        }
+        setFormErrors(errors);
+        return Object.keys(errors).length === 0;
+    };
+
     const sendEmail = (e) => {
         e.preventDefault();
+        if (validateForm()) {
+            emailjs.sendForm('service_9ujz86j', 'template_c049073', form.current, 'XlOnUKELNJmFtSAU3')
+                .then(
+                    () => {
+                        setPopupMessage('Message sent successfully!');
+                        setPopupVisible(true);
+                        setFormData({ user_name: '', user_email: '', message: '' });
+                    },
+                    (error) => {
+                        setPopupMessage('Failed to send message: ' + error.text);
+                        setPopupVisible(true);
+                    }
+                );
+        }
+    };
 
-        emailjs.sendForm('service_9ujz86j', 'template_c049073', form.current, 'XlOnUKELNJmFtSAU3')
-            .then(
-                () => {
-                    setPopupMessage('Message sent successfully!');
-                    setPopupVisible(true);
-                    e.target.reset();
-                },
-                (error) => {
-                    setPopupMessage('Failed to send message: ' + error.text);
-                    setPopupVisible(true);
-                }
-            );
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData({ ...formData, [name]: value });
     };
 
     return (
-        <div className="bg-gray-100 py-16 relative">
+        <div className="bg-gray-100 py-16 relative" id="contact">
             {popupVisible && (
-                <div className="fixed inset-0 flex items-center justify-center z-50">
-                    <div className="bg-white p-8 rounded shadow-lg text-center relative">
-                        <FontAwesomeIcon icon={faCheckCircle} className="text-green-500 text-3xl mb-4" />
-                        <p className="mb-4">{popupMessage}</p>
-                    </div>
+                <>
                     <div className="fixed inset-0 bg-black opacity-50"></div>
-                </div>
+                    <div className="fixed inset-0 flex items-center justify-center z-50">
+                        <div className="bg-white p-20 rounded shadow-lg text-center relative z-10">
+                            <FontAwesomeIcon icon={faCheckCircle} className="text-green-500 text-5xl mb-4" />
+                            <p className="mb-4">{popupMessage}</p>
+                        </div>
+                    </div>
+                </>
             )}
             <div className="container mx-auto px-4">
                 <div className="text-center mb-12">
@@ -67,9 +99,12 @@ const ContactUsPage = () => {
                                     type="text"
                                     id="user_name"
                                     name="user_name"
-                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                    value={formData.user_name}
+                                    onChange={handleChange}
+                                    className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${formErrors.user_name ? 'border-red-500' : ''}`}
                                     placeholder="Your Name"
                                 />
+                                {formErrors.user_name && <p className="text-red-500 text-xs italic">{formErrors.user_name}</p>}
                             </div>
                             <div className="mb-4">
                                 <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="user_email">Email</label>
@@ -77,9 +112,12 @@ const ContactUsPage = () => {
                                     type="email"
                                     id="user_email"
                                     name="user_email"
-                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                    value={formData.user_email}
+                                    onChange={handleChange}
+                                    className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${formErrors.user_email ? 'border-red-500' : ''}`}
                                     placeholder="Your Email"
                                 />
+                                {formErrors.user_email && <p className="text-red-500 text-xs italic">{formErrors.user_email}</p>}
                             </div>
                             <div className="mb-4">
                                 <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="message">Message</label>
@@ -87,9 +125,12 @@ const ContactUsPage = () => {
                                     id="message"
                                     name="message"
                                     rows="5"
-                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                    value={formData.message}
+                                    onChange={handleChange}
+                                    className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${formErrors.message ? 'border-red-500' : ''}`}
                                     placeholder="Your Message"
                                 ></textarea>
+                                {formErrors.message && <p className="text-red-500 text-xs italic">{formErrors.message}</p>}
                             </div>
                             <button
                                 type="submit"

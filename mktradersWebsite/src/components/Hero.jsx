@@ -14,7 +14,7 @@ const Hero = () => {
 
     return (
         <div
-            className="relative bg-cover bg-center h-screen flex items-center"
+            className="relative bg-cover bg-center h-screen flex items-center " id="home"
             style={{
                 backgroundImage: `url("${images[currentIndex]}")`,
                 transition: 'background-image 1s ease-in-out'
