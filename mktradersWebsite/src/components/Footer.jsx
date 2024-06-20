@@ -2,7 +2,7 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPhone, faEnvelope, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
 import { faFacebook, faInstagram, faWhatsapp } from '@fortawesome/free-brands-svg-icons';
-import { Link } from 'react-scroll'; // Import Link from react-scroll
+import { Link } from 'react-scroll';
 
 const Footer = () => {
     return (
@@ -23,16 +23,32 @@ const Footer = () => {
                         </div>
                         <div className="flex flex-col items-center md:flex-row md:items-start mb-4">
                             <FontAwesomeIcon icon={faEnvelope} className="text-green-500 text-xl md:mr-4" />
-                            <p className="text-gray-400">biz@mktraders.lk</p>
+                            <a href="mailto:biz@mktraders.lk" className="text-gray-400 hover:text-green-500">
+                                biz@mktraders.lk
+                            </a>
                         </div>
                         <div className="flex justify-center md:justify-start space-x-4">
-                            <a href="https://facebook.com" className="text-blue-500 hover:text-blue-700">
+                            <a
+                                href="https://www.facebook.com/share/HnmWzUNj8FrZSBiD/?mibextid=LQQJ4d"
+                                className="text-blue-500 hover:text-blue-700"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
                                 <FontAwesomeIcon icon={faFacebook} size="2x" />
                             </a>
-                            <a href="https://whatsapp.com" className="text-green-500 hover:text-green-700">
+                            <a
+                                href={`https://wa.me/${+94777276471}?text=Hello!%20This%20is%20a%20dummy%20message.`}
+                                className="text-green-500 hover:text-green-700"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
                                 <FontAwesomeIcon icon={faWhatsapp} size="2x" />
                             </a>
-                            <a href="https://instagram.com" className="text-pink-500 hover:text-pink-700">
+                            <a
+                                href="home"
+                                className="text-pink-500 hover:text-pink-700"
+                                rel="noopener noreferrer"
+                            >
                                 <FontAwesomeIcon icon={faInstagram} size="2x" />
                             </a>
                         </div>
@@ -74,7 +90,7 @@ const Footer = () => {
                             ></iframe>
                         </div>
                     </div>
-                    
+
                 </div>
                 <div className="text-center text-gray-400">
                     © 2024 All rights reserved. Development with <span className="text-pink-500">❤</span> by DevZee.

@@ -156,7 +156,7 @@ const ContactUsPage = () => {
                             <FontAwesomeIcon icon={faEnvelope} className="text-gray-800 text-xl mr-4" />
                             <div>
                                 <p className="text-gray-700">biz@mktraders.lk</p>
-                                <p className="text-gray-600 text-sm">We reply within 24 hours</p>
+                                <p className="text-gray-600 text-sm">We reply within 12 hours</p>
                             </div>
                         </div>
                         <div className="mb-4 flex items-center">
@@ -169,13 +169,15 @@ const ContactUsPage = () => {
 
                         <h3 className="text-2xl font-bold text-gray-800 mt-8 mb-4">Follow Us</h3>
                         <div className="flex space-x-4">
-                            <a href="https://facebook.com" className="text-blue-500 hover:text-blue-700">
+                            <a href="https://www.facebook.com/share/HnmWzUNj8FrZSBiD/?mibextid=LQQJ4d" target="_blank"
+                                rel="noopener noreferrer" className="text-blue-500 hover:text-blue-700">
                                 <FontAwesomeIcon icon={faFacebook} size="2x" />
                             </a>
-                            <a href="https://twitter.com" className="text-green-400 hover:text-green-600">
+                            <a href={`https://wa.me/${+94777276471}?text=Hello!%20This%20is%20a%20dummy%20message.`} className="text-green-400 hover:text-green-600" target="_blank"
+                                rel="noopener noreferrer">
                                 <FontAwesomeIcon icon={faWhatsapp} size="2x" />
                             </a>
-                            <a href="https://instagram.com" className="text-pink-500 hover:text-pink-700">
+                            <a href="home" className="text-pink-500 hover:text-pink-700">
                                 <FontAwesomeIcon icon={faInstagram} size="2x" />
                             </a>
                         </div>
