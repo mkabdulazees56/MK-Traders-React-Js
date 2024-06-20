@@ -8,6 +8,7 @@ import Process from './components/Process';
 import WhyUsPage from './components/WhyUsPage';
 import ContactUsPage from './components/ContactUs';
 import Footer from './components/Footer';
+import WhatsAppIcon from './components/WhatsAppIcon'
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
       <WhyUsPage/>
       <ContactUsPage/>
       <Footer/>
+      <WhatsAppIcon phoneNumber="+94777276471" />
     </div>
   );
 }
