@@ -15,7 +15,7 @@ const Hero = () => {
     return (
         <div
             className="relative bg-cover bg-center h-screen flex items-center"
-            style={{ 
+            style={{
                 backgroundImage: `url("${images[currentIndex]}")`,
                 transition: 'background-image 1s ease-in-out'
             }}
@@ -27,9 +27,10 @@ const Hero = () => {
                     <p className="mt-4 text-lg md:px-60">
                         Delve into our carefully curated selection of top-tier agricultural offerings, featuring everything from exquisite fresh produce to innovative value-added products. Crafted to meet the exacting standards of global markets, each item promises unparalleled quality and freshness. Elevate your agricultural experience with us today.
                     </p>
-                    <button className="mt-6 px-8 py-3 bg-gray-800 text-white rounded-[25px] font-semibold hover:bg-[#b5e5e1] hover:text-black focus:outline-none focus:bg-[#b5e5e1]">
+                    <button className="mt-6 px-8 py-3 bg-gray-800 text-white rounded-[25px] font-semibold hover:bg-[#b5e5e1] hover:text-black transform hover:scale-110 transition-transform duration-300">
                         Explore
                     </button>
+
                 </div>
             </div>
         </div>
