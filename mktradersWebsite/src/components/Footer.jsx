@@ -5,6 +5,7 @@ import { faFacebook, faInstagram, faWhatsapp } from '@fortawesome/free-brands-sv
 import { Link } from 'react-scroll';
 
 const Footer = () => {
+    const currentYear = new Date().getFullYear();
     return (
         <footer className="bg-gray-900 text-white py-12">
             <div className="container mx-auto px-4 lg:px-8">
@@ -93,8 +94,17 @@ const Footer = () => {
 
                 </div>
                 <div className="text-center text-gray-400">
-                    © 2024 All rights reserved. Development with <span className="text-pink-500">❤</span> by DevZee.
+                    © {currentYear} All rights reserved. Development with <span className="text-pink-500">❤</span> by{' '}
+                    <a
+                        href="https://mkabdulazees.netlify.app/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-pink-500 hover:underline"
+                    >
+                        DevZee
+                    </a>.
                 </div>
+
             </div>
         </footer>
     );
